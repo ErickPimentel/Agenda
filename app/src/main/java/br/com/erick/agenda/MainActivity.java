@@ -3,6 +3,8 @@ package br.com.erick.agenda;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,14 +21,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<String> alunos = new ArrayList<>(Arrays.asList("Erick", "Fran", "Jose"));
+        List<String> alunos = new ArrayList<>(Arrays.asList("Erick", "Fran", "Jose", "Maria", "Ana"));
 
-        TextView primeiroAluno = findViewById(R.id.textView);
-        TextView segundoAluno = findViewById(R.id.textView2);
-        TextView terceiroAluno = findViewById(R.id.textView3);
-
-        primeiroAluno.setText(alunos.get(0));
-        segundoAluno.setText(alunos.get(1));
-        terceiroAluno.setText(alunos.get(2));
+        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_de_alunos);
+        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos));
     }
 }
