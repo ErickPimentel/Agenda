@@ -24,5 +24,9 @@ public class MainActivity extends Activity {
         TextView primeiroAluno = findViewById(R.id.textView);
         TextView segundoAluno = findViewById(R.id.textView2);
         TextView terceiroAluno = findViewById(R.id.textView3);
+
+        primeiroAluno.setText(alunos.get(0));
+        segundoAluno.setText(alunos.get(1));
+        terceiroAluno.setText(alunos.get(2));
     }
 }
