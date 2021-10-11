@@ -1,5 +1,7 @@
 package br.com.erick.agenda.ui.activity;
 
+import static br.com.erick.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +23,6 @@ import br.com.erick.agenda.model.Aluno;
 public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de alunos";
-    public static final String CHAVE_ALUNO = "aluno";
     private final AlunoDAO dao = new AlunoDAO();
 
     @Override
