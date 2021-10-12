@@ -4,11 +4,14 @@ import static br.com.erick.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +38,22 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         dao.salva(new Aluno("Erick Spinelli Pimentel", "81998980445", "erick@gmail.com"));
         dao.salva(new Aluno("Silvia Spinelli de Souza Menezes Pimentel", "81997867761", "silvia@gmail.com"));
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add("Remover");
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        Aluno alunoEscolhido = adapter.getItem(menuInfo.position);
+        remove(alunoEscolhido);
+        return super.onContextItemSelected(item);
+
     }
 
     private void configuraFabNovoAluno() {
@@ -69,20 +88,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         configuraListenerDeCliquePorItem(listaDeAlunos);
 
-        configuraListenerDeCliqueLongoPorItem(listaDeAlunos);
-
+        registerForContextMenu(listaDeAlunos);
     }
 
-    private void configuraListenerDeCliqueLongoPorItem(ListView listaDeAlunos) {
-        listaDeAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Aluno alunoEscolhido = (Aluno) adapterView.getItemAtPosition(posicao);
-                remove(alunoEscolhido);
-                return true;
-            }
-        });
-    }
 
     private void remove(Aluno aluno) {
         dao.remove(aluno);
