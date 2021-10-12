@@ -36,6 +36,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         configuraFabNovoAluno();
         configuraLista();
 
+
         dao.salva(new Aluno("Erick Spinelli Pimentel", "81998980445", "erick@gmail.com"));
         dao.salva(new Aluno("Silvia Spinelli de Souza Menezes Pimentel", "81997867761", "silvia@gmail.com"));
         dao.salva(new Aluno("Antonio Albino Pimentel Junior", "81997614471", "antonio@gmail.com"));
