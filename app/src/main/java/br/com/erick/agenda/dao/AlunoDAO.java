@@ -7,6 +7,8 @@ import java.util.List;
 
 import br.com.erick.agenda.model.Aluno;
 
+
+//Esta classe nao esta sendo utilizada, pois foi substiuida pela utilizacao do Room na Interface AlunoDAO
 public class AlunoDAO {
 
     private final static List<Aluno> alunos = new ArrayList<>();
